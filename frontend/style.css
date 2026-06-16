@@ -1,0 +1,251 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;800&family=Poppins:wght@300;400;500;600&display=swap');
+
+/* RESET */
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    min-height:100vh;
+    overflow-x:hidden;
+
+    font-family:'Poppins',sans-serif;
+    color:white;
+
+    background-image:url("https://a.storyblok.com/f/165154/1456x816/59733ebbf6/04_-sell-tickets-live-events.png/m/");
+    background-size:cover;
+    background-position:center;
+    background-repeat:no-repeat;
+    background-attachment:fixed;
+}
+
+/* DARK OVERLAY */
+body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,0.75);
+    backdrop-filter:blur(4px);
+    z-index:-1;
+}
+
+/* MAIN CONTAINER */
+.container{
+    display:flex;
+    min-height:100vh;
+}
+
+/* LEFT PANEL */
+.left-panel{
+    width:35%;
+    padding:40px;
+
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+
+    background:rgba(0,0,0,0.45);
+    backdrop-filter:blur(15px);
+
+    border-right:1px solid rgba(255,204,0,0.3);
+}
+
+/* TITLE */
+.left-panel h1{
+    font-family:'Orbitron',sans-serif;
+    font-size:42px;
+    margin-bottom:30px;
+    text-align:center;
+
+    color:#ffcc00;
+
+    text-shadow:
+        0 0 10px #ffcc00,
+        0 0 20px #ffcc00,
+        0 0 40px #ffcc00;
+}
+
+/* INPUTS */
+input{
+    width:100%;
+    margin-bottom:15px;
+    padding:14px;
+
+    border:1px solid rgba(255,204,0,0.4);
+    border-radius:12px;
+
+    background:rgba(255,255,255,0.08);
+    backdrop-filter:blur(10px);
+
+    color:white;
+    font-size:15px;
+
+    outline:none;
+    transition:0.3s;
+}
+
+input::placeholder{
+    color:#cccccc;
+}
+
+input:focus{
+    border-color:#ffcc00;
+
+    box-shadow:
+        0 0 10px #ffcc00,
+        0 0 20px rgba(255,204,0,0.4);
+}
+
+/* ADD BUTTON */
+.left-panel button{
+    padding:14px;
+    border:none;
+    border-radius:12px;
+
+    background:linear-gradient(
+        90deg,
+        #ffcc00,
+        #ff6600
+    );
+
+    color:black;
+    font-weight:700;
+    font-size:15px;
+    cursor:pointer;
+
+    transition:0.3s;
+}
+
+.left-panel button:hover{
+    transform:translateY(-3px);
+
+    box-shadow:
+        0 0 15px #ffcc00,
+        0 0 30px #ff6600;
+}
+
+/* RIGHT PANEL */
+.right-panel{
+    width:65%;
+    padding:30px;
+    overflow-y:auto;
+}
+
+/* EVENTS TITLE */
+.right-panel h2{
+    font-family:'Orbitron',sans-serif;
+    color:#ffcc00;
+    margin-bottom:25px;
+
+    text-shadow:
+        0 0 10px #ffcc00;
+}
+
+/* EVENT GRID */
+#eventList{
+    display:flex;
+    flex-wrap:wrap;
+    gap:20px;
+}
+
+/* EVENT CARD */
+.event-card{
+    width:260px;
+    padding:20px;
+
+    background:rgba(255,255,255,0.08);
+    backdrop-filter:blur(12px);
+
+    border:1px solid rgba(255,204,0,0.35);
+    border-radius:18px;
+
+    transition:0.4s;
+}
+
+.event-card:hover{
+    transform:translateY(-10px);
+
+    box-shadow:
+        0 0 15px rgba(255,204,0,0.6),
+        0 0 30px rgba(255,204,0,0.3);
+}
+
+/* EVENT NAME */
+.event-card h3{
+    color:#ffcc00;
+    margin-bottom:12px;
+
+    font-family:'Orbitron',sans-serif;
+    font-size:18px;
+}
+
+/* EVENT DETAILS */
+.event-card p{
+    color:#e0e0e0;
+    margin-bottom:8px;
+    font-size:14px;
+}
+
+/* DELETE BUTTON */
+.delete-btn{
+    width:100%;
+    margin-top:12px;
+    padding:10px;
+
+    border:none;
+    border-radius:10px;
+
+    background:#ff003c;
+    color:white;
+
+    font-weight:600;
+    cursor:pointer;
+
+    transition:0.3s;
+}
+
+.delete-btn:hover{
+    background:#ff3366;
+
+    box-shadow:
+        0 0 10px #ff003c,
+        0 0 20px #ff003c;
+}
+
+/* SCROLLBAR */
+::-webkit-scrollbar{
+    width:8px;
+}
+
+::-webkit-scrollbar-track{
+    background:rgba(255,255,255,0.1);
+}
+
+::-webkit-scrollbar-thumb{
+    background:#ffcc00;
+    border-radius:10px;
+}
+
+/* MOBILE */
+@media(max-width:900px){
+
+    .container{
+        flex-direction:column;
+    }
+
+    .left-panel{
+        width:100%;
+        border-right:none;
+        border-bottom:1px solid rgba(255,204,0,0.3);
+    }
+
+    .right-panel{
+        width:100%;
+    }
+
+    #eventList{
+        justify-content:center;
+    }
+}

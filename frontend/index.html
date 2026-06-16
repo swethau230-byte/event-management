@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Management Dashboard</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="container">
+
+        <!-- LEFT SIDE -->
+        <div class="left-panel">
+
+            <h1>EVENT HUB</h1>
+
+            <input type="text"
+                   id="eventName"
+                   placeholder="Enter Event Name">
+
+            <input type="date"
+                   id="eventDate">
+
+            <input type="text"
+                   id="location"
+                   placeholder="Enter Location">
+
+            <button onclick="addEvent()">
+                ADD EVENT
+            </button>
+
+        </div>
+
+        <!-- RIGHT SIDE -->
+        <div class="right-panel">
+
+            <h2>Upcoming Events</h2>
+
+            <div id="eventList">
+
+                <!-- Events loaded from JS -->
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <script src="js.js"></script>
+
+</body>
+</html>
