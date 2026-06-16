@@ -1,58 +1,39 @@
 package com.event.management.controller;
 
-import com.event.management.entity.Event;
-import com.event.management.repository.EventRepository;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
+import com.event.management.entity.Event;
+import com.event.management.service.EventService;
 
 @RestController
+@CrossOrigin(origins = "*")
 @RequestMapping("/events")
 public class EventController {
 
     @Autowired
-    private EventRepository repo;
+    private EventService eventService;
 
-    // CREATE (POST)
-    @PostMapping
-    public Event createEvent(@RequestBody Event event) {
-        return repo.save(event);
-    }
-
-    // GET ALL
+    // GET ALL EVENTS
     @GetMapping
     public List<Event> getAllEvents() {
-        return repo.findAll();
+        return eventService.getAllEvents();
     }
 
-    // GET BY ID
-    @GetMapping("/{id}")
-    public Event getEventById(@PathVariable Long id) {
-        return repo.findById(id).orElse(null);
+    // ADD EVENT
+    @PostMapping
+    public Event addEvent(@RequestBody Event event) {
+        return eventService.saveEvent(event);
     }
 
-    // UPDATE (PUT)
-    @PutMapping("/{id}")
-    public Event updateEvent(@PathVariable Long id, @RequestBody Event newEvent) {
-
-        return repo.findById(id).map(event -> {
-            event.setEventName(newEvent.getEventName());
-            event.setEventDate(newEvent.getEventDate());
-            event.setLocation(newEvent.getLocation());
-            return repo.save(event);
-        }).orElse(null);
-    }
-
-    // DELETE
+    // DELETE EVENT
     @DeleteMapping("/{id}")
     public String deleteEvent(@PathVariable Long id) {
 
-        if (repo.existsById(id)) {
-            repo.deleteById(id);
-            return "Deleted successfully";
-        } else {
-            return "Event not found";
-        }
+        eventService.deleteEvent(id);
+
+        return "Event Deleted Successfully";
     }
 }
